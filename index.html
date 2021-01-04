@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>retake calculator</p>
+
+<button onclick="math101()">Calculate</button>
+
+<p id="A"></p>
+<p id="A-"></p>
+<p id="B+"></p>
+<p id="B"></p>
+<p id="B-"></p>
+<p id="C+"></p>
+<p id="C"></p>
+<p id="C-"></p>
+<p id="D+"></p>
+<p id="D"></p>
+<p id="F"></p>
+
+<script>
+function math101() {
+	var grading = {"A": 80, "A-": 75, "B+": 70, "B": 65, "B-": 60, "C+": 55, "C": 50, "C-": 45, "D+": 40, "D": 30, "F": 0}
+
+	var midterm = prompt("Midterm Score", "0");
+	var midtermActual = parseFloat(midterm) * 0.4;
+
+	var homework = prompt("Homework Score", "0");
+	var homeworkActual = parseFloat(homework) * 0.1;
+
+	var quiz = prompt("Quiz Score", "0");
+	var quizActual = parseFloat(quiz) * 1;
+
+	var rest = midtermActual + homeworkActual + quizActual;
+
+	for ([letter, neededForGrade] of Object.entries(grading)) {
+	    var neededFinal = (neededForGrade - rest) * 2.5;
+	    var message = ":( <br>";
+
+	    if (neededFinal > 100) {
+	  	  document.getElementById(letter).innerHTML = "For " + letter + ": -" + "<br>";
+	    } else if (neededFinal > 0) {
+	  	  document.getElementById(letter).innerHTML = "For " + letter + ": " + neededFinal.toFixed(2); + "<br>";
+	    } else {
+	  	  document.getElementById(letter).innerHTML = "For " + letter + ": 0" + "<br>";
+	      break;
+	    }
+	}
+}
+</script>
+
+</body>
+</html>
